@@ -1,6 +1,8 @@
 import uvicorn
 from fastapi import FastAPI
 
+from models import Book
+
 app = FastAPI()
 
 
@@ -29,6 +31,11 @@ async def read_author(author_id: int):
         "author_id": author_id,
         "name": "Ernest Hemingway"
     }
+
+
+@app.post("/book")
+async def create_book(book: Book):
+    return book
 
 
 if __name__ == "__main__":
